@@ -1,15 +1,15 @@
 var https = require('https');
 var express=require('express');
 var fs = require('fs');
+var bodyParser = require('body-parser');
 
 var app = express();
 
-var defpath="C:\\Users\\flp\\Documents\\Node\\SessionTestModule\\Sessions\\";
+var defpath="Y:\\SessionTestModule\\Sessions\\";
 
-app.configure(function () {
-    app.use(express.bodyParser());
-    app.use(app.router);
-});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/session', function (req,res) {
 // Create a user with a session
