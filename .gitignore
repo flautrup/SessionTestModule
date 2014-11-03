@@ -1,12 +1,21 @@
+#Session files
+sessions/*.json
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+
+# Certificates
+*.pfx
 
 # Folder config file
 Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+#Node modules
+node_modules
 
 # Windows Installer files
 *.cab
