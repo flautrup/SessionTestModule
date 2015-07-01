@@ -40,7 +40,7 @@ console.log("Request"+req.params.sid);
 app.get('/user/:ud/:uid', function(req,res) {
 // Return all sessions for :id
 console.log("Read users sessions");
-console.log("Request"+req.params.UD+" "+req.params.sid);
+console.log("Request"+req.params.ud+" "+req.params.uid);
 	var userdirectory=req.params.ud;
 	var userid=req.params.uid;
 	var session=getSessionFromUid(userid,userdirectory);
@@ -50,7 +50,7 @@ console.log("Request"+req.params.UD+" "+req.params.sid);
 app.delete('/user/:ud/:uid', function(req,res) {
 // Delete all sessions for :id
 console.log("Delete users sessions");
-console.log("Request"+req.params.UD+" "+req.params.sid);
+console.log("Request"+req.params.ud+" "+req.params.uid);
 	var userdirectory=req.params.ud;
 	var userid=req.params.uid;
 	var session=deleteSessionFromUid(userid, userdirectory);

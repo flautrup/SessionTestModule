@@ -1,9 +1,9 @@
-SessionTestModule
+#SessionTestModule
 
-Description:
+##Description
 Prof of concept implementation of the Session Module API that implements persistant storage of sessions using files
 
-Installation:
+##Installation
 1. Install nodejs found at http://nodejs.org/
 2. Dowload the SessionTestModule repository
 3. From the command prompt go to the directory where you stored the content
