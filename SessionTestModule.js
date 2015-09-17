@@ -1,3 +1,29 @@
+/*
+=========================================================================================
+File: SessionTestModule.js
+Developer: Fredrik Lautrup
+Created Date: 2014
+
+Description:
+Prof of concept implementation of the Session Module API that implements
+persistant storage of sessions using files
+
+WARNING!:
+This code is intended for testing and demonstration purposes only.  It is not meant for
+production environments.  In addition, the code is not supported by Qlik.
+
+Change Log
+Developer                       Change Description                      Modify Date
+-----------------------------------------------------------------------------------------
+Fredrik Lautrup                 Initial Release                         October 7, 2014
+
+
+-----------------------------------------------------------------------------------------
+
+
+=========================================================================================
+*/
+
 var https = require('https');
 var express=require('express');
 var fs = require('fs');
@@ -81,10 +107,10 @@ function generateUUID(){
 function createSessionStorage(req) {
 //Create session json files
 	var sessionobj=req.body;
-	
+
 	if (sessionobj.SessionId===undefined || sessionobj.SessionId===null ) {
 		sessionobj.SessionId=generateUUID();
-	} 
+	}
 
 fs.writeFileSync(defpath+sessionobj.UserDirectory+"-"+sessionobj.UserId+"-"+sessionobj.SessionId+".json", JSON.stringify(sessionobj));
 
@@ -112,7 +138,7 @@ function deleteSessionFromSid(sid) {
 		if (sessionFiles[count].indexOf(sid)>-1) {
 			sessions=sessions+fs.readFileSync(defpath+sessionFiles[count]);
 			fs.unlink(defpath+sessionFiles[count]);
-			
+
 			}
 	}
 	return sessions;
@@ -150,6 +176,3 @@ return sessions;
 
 //Start listener
 https.createServer(httpsoptions, app).listen(8188);
-
-
-
