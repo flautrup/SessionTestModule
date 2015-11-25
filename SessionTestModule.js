@@ -163,13 +163,17 @@ function getSessionFromUid(uid,ud) {
 //Get all sessions from uid
 	var filenamestr=ud+"\-"+uid;
 	var filenamepatt=new RegExp(filenamestr,"i");
-	var sessions="";
+	var sessions="[";
 	var sessionFiles=fs.readdirSync(defpath);
 	for (var count=0; count<sessionFiles.length; count++) {
 		if (filenamepatt.test(sessionFiles[count])== true) {
+			if(count>1) {
+				sessions=sessions+",";
+			}
 			sessions=sessions+fs.readFileSync(defpath+sessionFiles[count]);
 		}
 	}
+	sessions=sessions+"]";
 return sessions;
 }
 
