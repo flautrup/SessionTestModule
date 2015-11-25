@@ -31,7 +31,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var defpath="Y:\\SessionTestModule\\Sessions\\";
+var defpath="C:\\Add Directory\\Sessions\\";
 
 
 app.use(bodyParser.json());
@@ -123,7 +123,7 @@ function getSessionFromSid(sid) {
 var sessions="";
 var sessionFiles=fs.readdirSync(defpath);
 for (var count=0; count<sessionFiles.length; count++) {
-	if (sessionFiles[count].indexOf(sid)>-1) {
+	if (sessionFiles[count].indexOf(sid+".json")>-1) {
 		sessions=sessions+fs.readFileSync(defpath+sessionFiles[count]);
 		}
 }
@@ -135,7 +135,7 @@ function deleteSessionFromSid(sid) {
 	var sessions="";
 	var sessionFiles=fs.readdirSync(defpath);
 	for (var count=0; count<sessionFiles.length; count++) {
-		if (sessionFiles[count].indexOf(sid)>-1) {
+		if (sessionFiles[count].indexOf(sid+".json")>-1) {
 			sessions=sessions+fs.readFileSync(defpath+sessionFiles[count]);
 			fs.unlink(defpath+sessionFiles[count]);
 
@@ -167,7 +167,7 @@ function getSessionFromUid(uid,ud) {
 	var sessionFiles=fs.readdirSync(defpath);
 	for (var count=0; count<sessionFiles.length; count++) {
 		if (filenamepatt.test(sessionFiles[count])== true) {
-			if(count>1) {
+			if(count>0) {
 				sessions=sessions+",";
 			}
 			sessions=sessions+fs.readFileSync(defpath+sessionFiles[count]);
